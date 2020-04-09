@@ -1,0 +1,11 @@
+sudo: required
+
+services:
+  - docker
+
+
+before_install:
+  - docker build -t mmazepa/docker-my-frontend -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true mmazepa/docker-my-frontend yarn test
